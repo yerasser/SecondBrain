@@ -59,42 +59,29 @@
         <main>
             <div class="side_bar">
                 <div class="control_panel">
-                    <button class="new_note">
+                    <div class="new_note">
                         <img src="image/side_bar/new_note.png">
-                    </button>
-                    <button class="delete_note">
+                    </div>
+                    <div class="delete_note">
                         <img src="image/side_bar/delete.png">
-                    </button>
-                    <button class="sort">
+                    </div>
+                    <div class="sort">
                         <img src="image/side_bar/sort.png">
-                    </button>
+                    </div>
                 </div>
                 <div class="note_list">
                     <li class="item_note_list active_item" data-note-id="1">
-                        <img src="image/side_bar/document.png">
-                        <span class="note_name">Untitled2</span>
-                    </li>
-                    <li class="item_note_list" data-note-id="2">
-                        <img src="image/side_bar/document.png">
-                        <span class="note_name">Untitled1</span>
+                        <span class="note_name">Your first note</span>
                     </li>
                 </div>
             </div>
             <div class="all_notes">
                 <div class="note active_note" data-note-id="1">
                     <div class="container_note_title">
-                        <h1 class="note_title" contenteditable="true">Untitled1</h1>
+                        <h1 class="note_title" contenteditable="true">Your first note</h1>
                     </div>
                     <div class="container_note_body">
-                        <div class="note_body" contenteditable="true">First note</div>
-                    </div>
-                </div>
-                <div class="note" data-note-id="2">
-                    <div class="container_note_title">
-                        <h1 class="note_title" contenteditable="true">Untitled2</h1>
-                    </div>
-                    <div class="container_note_body">
-                        <div class="note_body" contenteditable="true">First note</div>
+                        <div class="note_body" contenteditable="true">Hello World</div>
                     </div>
                 </div>
             </div>
@@ -103,6 +90,7 @@
 
     <script src="js/jquery-3.7.1.min.js"></script>
     <script type="module" src="js/auth.js"></script>
+    <script src="js/markdown.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

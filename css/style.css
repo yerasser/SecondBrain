@@ -15,19 +15,31 @@
     margin-bottom: 20px;
 }
 
+.note_title {
+    outline: none;
+}
 
 .container_note_body {
     padding: 10px 0;
+}
+
+.note_body {
     min-height: 80vh;
+    outline: none;
 }
 
 .side_bar {
     width: 20%;
-    max-width: 20%;
     padding: 20px 10px;
     height: 100vh;
     background-color: #f8f8f8;
-    border-right: 1px solid #8f8f8f;;
+    border-right: 1px solid #8f8f8f;
+    transform: translateX(-100%);
+    transition: 0.5s;
+}
+
+.active_side_bar {
+    transform: translateX(0);
 }
 
 .control_panel {
@@ -36,8 +48,12 @@
     justify-content: space-between;
 }
 
+.control_panel > * {
+    cursor: pointer;
+}
+
 .item_note_list {
-    padding: 5px 0;
+    padding: 5px;
     display: flex;
 }
 
@@ -53,6 +69,7 @@
 .note_name {
     max-width: 100%;
     overflow: hidden;
+    font-size: 15px;
 }
 
 .active_note {
