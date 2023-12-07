@@ -1,0 +1,14 @@
+{
+  "name": "secondbrain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "start": ""
+  },
+  "author": "Yerassyl",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^10.7.1"
+  }
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/nav_bar.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="content">
+        <aside class="nav_bar">
+            <div class="nav_using">
+                <div class="user">
+                    <img src="image/nav_bar/user.png">
+                    <div class="auth_modal_window" style="display: none;">
+                        <div class="modal_content">
+                            <h1 class="modal_title">Welcome</h1>
+                            <div class="logo">
+                                <img src="image/logo.png">
+                            </div>
+                            <form id="auth">
+                                <div class="underline">
+                                    <input type="email" class="auth_input" id="name" placeholder="Name" required>
+                                </div>
+                                <div class="underline">
+                                    <input type="password" class="auth_input" id="pswrd" placeholder="Password" required>
+                                </div>
+                                <div class="auth_btns">
+                                    <button type="submit" class="login_btn">Login</button>
+                                </div>
+                            </form>
+                            
+                            <button class="not_now_btn">Not now</button>
+                            <span class="warning">WARNING! Without authorization, your notes aren't saved</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="calender">
+                    <img src="image/nav_bar/calendar.png">
+                </div>
+                <div class="show">
+                    <img src="image/nav_bar/show_side_bar.png">
+                </div>
+            </div>
+            <div class="nav_settings">
+                <div class="settings">
+                    <img src="image/nav_bar/setting.png">
+                </div>
+                <div class="logout">
+                  <img src="image/nav_bar/logout.png">
+                </div>
+            </div>
+        </aside>
+        <main>
+            <div class="side_bar">
+                <div class="control_panel">
+                    <button class="new_note">
+                        <img src="image/side_bar/new_note.png">
+                    </button>
+                    <button class="delete_note">
+                        <img src="image/side_bar/delete.png">
+                    </button>
+                    <button class="sort">
+                        <img src="image/side_bar/sort.png">
+                    </button>
+                </div>
+                <div class="note_list">
+                    <li class="item_note_list active_item" data-note-id="1">
+                        <img src="image/side_bar/document.png">
+                        <span class="note_name">Untitled2</span>
+                    </li>
+                    <li class="item_note_list" data-note-id="2">
+                        <img src="image/side_bar/document.png">
+                        <span class="note_name">Untitled1</span>
+                    </li>
+                </div>
+            </div>
+            <div class="all_notes">
+                <div class="note active_note" data-note-id="1">
+                    <div class="container_note_title">
+                        <h1 class="note_title" contenteditable="true">Untitled1</h1>
+                    </div>
+                    <div class="container_note_body">
+                        <div class="note_body" contenteditable="true">First note</div>
+                    </div>
+                </div>
+                <div class="note" data-note-id="2">
+                    <div class="container_note_title">
+                        <h1 class="note_title" contenteditable="true">Untitled2</h1>
+                    </div>
+                    <div class="container_note_body">
+                        <div class="note_body" contenteditable="true">First note</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
