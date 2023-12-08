@@ -32,13 +32,47 @@ $(document).ready(function() {
         $('.active_note').remove();
     })
 
-    $('.sort').click(function() {
-        let items = $('.note_list .item_note_list');
-        items.sort(function(a, b) {
-            let aName = $(a).find('.note_name').text().toLowerCase();
-            let bName = $(b).find('.note_name').text().toLowerCase();
-            return aName.localeCompare(bName);
-        });
-        $('.note_list').html(items);
+    $('.sort').click(function(event) {
+        $('.sort_select').show();
+        event.stopPropagation();
     })
+    $('.sort_select').change(function() {
+        let items = $('.note_list .item_note_list');
+        switch($(this).val()) {
+            case 'new_to_old':
+                items.sort(function(a, b) {
+                    return $(a).data('note-id') - $(b).data('note-id');
+                })
+                $('.note_list').html(items);
+                break;
+            case 'old_to_new':
+                items.sort(function(a, b) {
+                    return $(b).data('note-id') - $(a).data('note-id');
+                })
+                $('.note_list').html(items);
+                break;
+            case 'a_z':
+                items.sort(function(a, b) {
+                    let aName = $(a).find('.note_name').text().toLowerCase();
+                    let bName = $(b).find('.note_name').text().toLowerCase();
+                    return aName.localeCompare(bName);
+                });
+                $('.note_list').html(items);
+                break;
+            case 'z_a':
+                items.sort(function(a, b) {
+                    let aName = $(a).find('.note_name').text().toLowerCase();
+                    let bName = $(b).find('.note_name').text().toLowerCase();
+                    return bName.localeCompare(aName);
+                });
+                $('.note_list').html(items);
+                break;
+        }
+        $(this).hide()
+    })
+    $(document).click(function(e) {
+        if (!$(e.target).closest('.sort_select').length) {
+          $('.sort_select').hide();
+        }
+    });
 })

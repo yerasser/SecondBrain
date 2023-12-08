@@ -12,18 +12,11 @@
     z-index: 1;
 }
   
-.nav_using > * {
+.nav_bar > * {
     cursor: pointer;
-    margin-bottom: 10px;
 }
-  
-.nav_settings > * {
-    cursor: pointer;
-    margin-top: 10px;
-}
-  
 
-.auth_modal_window {
+.modal_window {
     position: fixed;
     top: 0;
     left: 0;
@@ -53,7 +46,6 @@
     padding: 0 30px;
 }
 
-
 .warning {
     color: #585858;
     font-size: 14px;
@@ -63,7 +55,7 @@
     width: 200px;
 }
 
-#auth > * {
+.auth_form > * {
     margin-bottom: 20px;
 }
 
@@ -74,7 +66,7 @@
     border-bottom: 2px solid #757582;
 }
 
-.login_btn {
+.btn {
     width: 100%;
     border: none;
     text-decoration: none;
@@ -86,18 +78,65 @@
     background-size: 200% auto;
     box-shadow: 0 0 20px rgba(0, 0, 0, .1);
     transition: .5s;
-    color: white;
+    color: #fff;
     background-image: linear-gradient(to right, #6E36D9 0%, #73CAFF 51%, #6E36D9 100%);
     cursor:pointer;
 }
 
-.login_btn:hover {
+.btn:hover {
     background-position: right center;
 }
 
-
-.not_now_btn {
+.to_signup,
+.to_login {
     width: fit-content;
     color: #4a4a4a;
     cursor:pointer;
+}
+
+.account_settings > * {
+    margin: 10px 0;
+}
+
+.error_input {
+    background-image: linear-gradient(to right, #800000 0%, #ff0000 51%, #800000 100%);
+    animation: error 0.5s;
+}
+
+@keyframes error {
+    0% { transform: translate(1px, 1px); }
+    10% { transform: translate(-1px, -2px); }
+    20% { transform: translate(-3px, 0px);}
+    30% { transform: translate(3px, 2px);}
+    40% { transform: translate(1px, -1px);}
+    50% { transform: translate(-1px, 2px); }
+    60% {transform: translate(-3px, 1px); }
+    70% { transform: translate(3px, 1px); }
+    80% { transform: translate(-1px, -1px); }
+    90% { transform: translate(1px, 2px);}
+    100% { transform: translate(1px, -2px); }
+}
+
+.fadeIn{
+	animation-name: fadeIn;
+	animation-duration: 0.5s;	
+	animation-timing-function: ease-in-out;	
+}
+
+@keyframes fadeIn {
+	0% {
+		transform: scale(0);
+		opacity: 0.0;		
+	}
+	60% {
+		transform: scale(1.1);	
+	}
+	80% {
+		transform: scale(0.9);
+		opacity: 1;	
+	}	
+	100% {
+		transform: scale(1);
+		opacity: 1;	
+	}		
 }

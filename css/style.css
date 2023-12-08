@@ -36,6 +36,7 @@
     border-right: 1px solid #8f8f8f;
     transform: translateX(-100%);
     transition: 0.5s;
+    position: relative;
 }
 
 .active_side_bar {
@@ -50,6 +51,11 @@
 
 .control_panel > * {
     cursor: pointer;
+}
+
+.sort_select {
+    position: absolute;
+    font-size: 14px;
 }
 
 .item_note_list {
@@ -78,4 +84,14 @@
 
 .active_item {
     background-color: #d3d3d3;
+}
+
+.user_about {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
 }

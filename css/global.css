@@ -99,3 +99,8 @@ main {
   display: flex;
   padding-left: 40px;
 }
+
+.night_theme {
+  background-color: #191919;
+  color: #fff;
+}
