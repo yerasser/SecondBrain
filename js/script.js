@@ -1,7 +1,6 @@
 $(document).ready(function() {
     $('.show').click(function() {
         $('.side_bar').toggleClass('active_side_bar')
-        
     })
 
     $('.note_list').on('click', '.item_note_list', function() {
@@ -41,13 +40,13 @@ $(document).ready(function() {
         switch($(this).val()) {
             case 'new_to_old':
                 items.sort(function(a, b) {
-                    return $(a).data('note-id') - $(b).data('note-id');
+                    return $(b).data('note-id') - $(a).data('note-id');
                 })
                 $('.note_list').html(items);
                 break;
             case 'old_to_new':
                 items.sort(function(a, b) {
-                    return $(b).data('note-id') - $(a).data('note-id');
+                    return $(a).data('note-id') - $(b).data('note-id');
                 })
                 $('.note_list').html(items);
                 break;

@@ -1,6 +1,6 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"
-import { getFirestore, collection, addDoc, getDoc, getDocs, deleteDoc, doc} from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js'
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"
+import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc} from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js'
 
 const firebaseConfig = {
     apiKey: "AIzaSyD34fZiUsl_zW3QF5-DxgJwT5gc4eY75vs",
@@ -10,19 +10,31 @@ const firebaseConfig = {
     messagingSenderId: "165333528780",
     appId: "1:165333528780:web:eecce3036df6f99d7b5269",
     measurementId: "G-0F4FLNEM15"
-  };
+};
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
-const db = getFirestore(app)
+const db = getFirestore(app);
 
 let user = null;
 onAuthStateChanged(auth, (authUser) => {
-    user = authUser
-})
+    user = authUser;
+});
 
 
 $(document).ready(function() {
+    function clearLists() {
+        $('.note_list').empty()
+        $('.all_notes').empty()
+    }
+
+    function showError() {
+        $('.btn').addClass('error_input');
+        setTimeout(function() { 
+            $('.btn').removeClass('error_input')
+        }, 500);
+    };
+
     $('.user').click(function() {
         if(user) {
             $('#account_email').text(user.email)
@@ -32,21 +44,18 @@ $(document).ready(function() {
         }
     });
     
-    $('.to_signup').click(function() {
-        $('#signup_window').show();
-    });
-    $('.to_login').click(function() {
-        $('#signup_window').hide();
+    $('.another_way_btn').click(function() {
+        $('#signup_window').toggle();
     });
     
     $(window).click(function(event) {
         if ((event.target === $('#login_window')[0]) || (event.target === $('#signup_window')[0]) || (event.target === $('#account_window')[0])) {
             $('#login_window').hide();
             $('#signup_window').hide();
-            $('#account_window').hide()
-        }
+            $('#account_window').hide();
+        };
     });
-    
+
     
     $('#login').submit(function(event) {
         event.preventDefault();
@@ -57,14 +66,11 @@ $(document).ready(function() {
         .then(function(userCredential) {
             const user = userCredential.user;
             $('#login_window').hide()
-          })
+        })
         .catch(function(error) {
             const errorCode = error.code;
             const errorMessage = error.message;
-            $('.auth_btn').addClass('error_input');
-            setTimeout(function() { 
-                $('.auth_btn').removeClass('error_input')
-            }, 500)
+            showError();
             console.error('Registration error:', errorCode, errorMessage);
         });
     });
@@ -80,10 +86,7 @@ $(document).ready(function() {
                 throw 'different passwords';
             }
         } catch(error) {
-            $('.auth_btn').addClass('error_input');
-            setTimeout(function() { 
-                $('.auth_btn').removeClass('error_input')
-            }, 500)
+            showError();
             return;
         }
         createUserWithEmailAndPassword(auth, email, password)
@@ -91,27 +94,26 @@ $(document).ready(function() {
             const user = userCredential.user;
             $('#signup_window').hide()
             $('#login_window').hide()
-          })
+        })
         .catch(function(error) {
             const errorCode = error.code;
             const errorMessage = error.message;
+            showError();
             console.error('Registration error:', errorCode, errorMessage);
         });
     });
     
     onAuthStateChanged(auth, async function() {
         if (user) {
-          const querySnapshot = await getDocs(collection(db, user.uid));
-          $('.note_list').empty()
-          $('.all_notes').empty()
-          querySnapshot.forEach((document) => {
-            $('.note_list').append('<li class="item_note_list" data-note-id="' + document.data().id + '"><span class="note_name">' + document.data().title + '</span></li>');
-            $('.all_notes').append('<div class="note" data-note-id="' + document.data().id + '"><div class="container_note_title"><h1 class="note_title" contenteditable="true">' + document.data().title + '</h1></div><div class="container_note_body"><div class="note_body" contenteditable="true">' + document.data().body + '</div></div></div>');
-          });
+            const querySnapshot = await getDocs(collection(db, user.uid));
+            clearLists();
+            querySnapshot.forEach((document) => {
+                $('.note_list').append('<li class="item_note_list" data-note-id="' + document.data().id + '"><span class="note_name">' + document.data().title + '</span></li>');
+                $('.all_notes').append('<div class="note" data-note-id="' + document.data().id + '"><div class="container_note_title"><h1 class="note_title" contenteditable="true">' + document.data().title + '</h1></div><div class="container_note_body"><div class="note_body" contenteditable="true">' + document.data().body + '</div></div></div>');
+            });
         } else {
-          $('.note_list').empty()
-          $('.all_notes').empty()
-          $('.note_list').append('<li class="item_note_list active_item" data-note-id="1"><span class="note_name">Untitled</span></li>');
+            clearLists();
+            $('.note_list').append('<li class="item_note_list active_item" data-note-id="1"><span     class="note_name">Untitled</span></li>');
             $('.all_notes').append('<div class="note active_note" data-note-id="1"><div class="container_note_title"><h1 class="note_title" contenteditable="true">Untitled</h1></div><div class="container_note_body"><div class="note_body" contenteditable="true">Hello</div></div></div>');
         }
     });
@@ -119,32 +121,6 @@ $(document).ready(function() {
     $('.logout').click(function() {
         auth.signOut()
     })
-
-    // async function saveNotes() {
-        
-    // // }
-
-    // $(window).on('beforeunload', async function() {
-    //     const querySnapshot = await getDocs(collection(db, user.uid));
-    //     querySnapshot.forEach(async function(document) {
-    //         await deleteDoc(doc(db, user.uid, document.id));    
-    //     })
-    //     $('.all_notes .note').each(async function() {
-    //         const noteId = $(this).data('noteId');
-    //         const noteTitle = $(this).find('.note_title').text();
-    //         const noteBody = $(this).find('.note_body').text();
-    //         try {
-    //           const docRef = await addDoc(collection(db, user.uid), {
-    //             id: noteId,
-    //             title: noteTitle,
-    //             body: noteBody,
-    //           });
-    //           console.log("Document written with ID: ", docRef.id);
-    //         } catch (e) {
-    //           console.error("Error adding document: ", e);
-    //         }
-    //       });
-    // })
 
     $('#save_notes').click(async function() {
         $(this).text('Saving')
@@ -157,14 +133,14 @@ $(document).ready(function() {
             const noteTitle = $(this).find('.note_title').text();
             const noteBody = $(this).find('.note_body').text();
             try {
-              const docRef = await addDoc(collection(db, user.uid), {
-                id: noteId,
-                title: noteTitle,
-                body: noteBody,
-              });
-              console.log("Document written with ID: ", docRef.id);
+                const docRef = await addDoc(collection(db, user.uid), {
+                    id: noteId,
+                    title: noteTitle,
+                    body: noteBody,
+                });
+                console.log("Document written with ID: ", docRef.id);
             } catch (e) {
-              console.error("Error adding document: ", e);
+                console.error("Error adding document: ", e);
             }
         });
         $(this).text('Save notes')

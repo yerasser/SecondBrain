@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/nav_bar.css">
+    <link rel="stylesheet" href="css/util.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="image/webicon.png">
+    <title>SecondBrain</title>
 </head>
 <body>
     <div class="content">
@@ -33,7 +34,7 @@
                                 <button type="submit" class="btn">Login</button>
                             </div>
                         </form>
-                        <button class="to_signup">Don't have acc? Sign up</button>
+                        <button class="another_way_btn">Don't have acc? Sign up</button>
                         <span class="warning">WARNING! Without authorization, your notes aren't saved</span>
                     </div>
                 </div>
@@ -47,17 +48,17 @@
                             <div class="underline">
                                 <input type="email" class="auth_input" id="signup_email" placeholder="Email" required>
                             </div>
-                            <div class="underline">
+                            <div>
                                 <input type="password" class="auth_input" id="signup_password" placeholder="Password" required>
                             </div>
-                            <div class="underline">
+                            <div>
                                 <input type="password" class="auth_input" id="signup_password_confirm" placeholder="Confirm password" required>
                             </div>
                             <div class="auth_btns">
                                 <button type="submit" class="btn">Sign up</button>
                             </div>
                         </form>
-                        <button class="to_login">I have acc. Login</button>
+                        <button class="another_way_btn">I have acc. Login</button>
                         <span class="warning">WARNING! Without authorization, your notes aren't saved</span>
                     </div>
                 </div>
@@ -65,7 +66,6 @@
                     <div class="modal_content">
                         <h1 class="modal_title" id="account_email">Your account</h1>
                         <div class="account_settings">
-                            <button class="btn" id="night_theme">Night theme</button>
                             <button class="btn" id="save_notes">Save notes</button>
                         </div>
                     </div>
@@ -90,10 +90,10 @@
                     <div class="sort">
                         <img src="image/side_bar/sort.png">
                         <select class="sort_select" style="display: none;">
-                            <option value="new_to_old">Create time(New to old)</option>
-                            <option value="old_to_new">Create time(Old to new)</option>
-                            <option value="a_z">Note name(A-Z)</option>
-                            <option value="z_a">Note name(Z-A)</option>
+                            <option value="new_to_old">New to old</option>
+                            <option value="old_to_new">Old to new</option>
+                            <option value="a_z">A-Z</option>
+                            <option value="z_a">Z-A</option>
                         </select>
                     </div>
                 </div>
@@ -106,9 +106,7 @@
     </div>
 
     <script src="js/jquery-3.7.1.min.js"></script>
-    <script type="module" src="js/nav_bar.js"></script>
-    <script src="js/markdown.js"></script>
+    <script type="module" src="js/util.js"></script>
     <script src="js/script.js"></script>
-    <!-- <script src="js/test.js"></script> -->
 </body>
 </html>

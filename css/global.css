@@ -90,17 +90,20 @@ select {
 /* ---------------------------------------------------------- */
 
 .content {
-  max-width: 1600px;
   display: flex;
+  max-width: 1600px;
 }
 
 main {
-  width: 100%;
   display: flex;
+  width: 100%;
+  height: 100vh;
   padding-left: 40px;
+  box-sizing: border-box;
 }
 
-.night_theme {
-  background-color: #191919;
-  color: #fff;
+@media screen and (max-width: 768px) {
+  main {
+    padding-left: 0px;
+  }
 }

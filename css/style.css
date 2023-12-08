@@ -1,17 +1,18 @@
 .all_notes {
     width: 100%;
+    box-sizing: border-box;
 }
 
 .note {
     display: none;
-    overflow-y: auto;
     max-height: 100vh;
     padding: 2% 10%;
+    overflow-y: auto;
 }
 
 .container_note_title {
-    width: 100%;
     position: relative;
+    width: 100%;
     margin-bottom: 20px;
 }
 
@@ -29,14 +30,14 @@
 }
 
 .side_bar {
+    position: relative;
     width: 20%;
-    padding: 20px 10px;
     height: 100vh;
+    padding: 20px 10px;
     background-color: #f8f8f8;
     border-right: 1px solid #8f8f8f;
     transform: translateX(-100%);
     transition: 0.5s;
-    position: relative;
 }
 
 .active_side_bar {
@@ -44,9 +45,9 @@
 }
 
 .control_panel {
-    padding-bottom: 20px;
     display: flex;
     justify-content: space-between;
+    padding-bottom: 20px;
 }
 
 .control_panel > * {
@@ -55,12 +56,13 @@
 
 .sort_select {
     position: absolute;
+    background-color: #fff;
     font-size: 14px;
 }
 
 .item_note_list {
-    padding: 5px;
     display: flex;
+    padding: 5px;
 }
 
 .item_note_list:hover {
@@ -74,8 +76,8 @@
 
 .note_name {
     max-width: 100%;
-    overflow: hidden;
     font-size: 15px;
+    overflow: hidden;
 }
 
 .active_note {
@@ -87,11 +89,19 @@
 }
 
 .user_about {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: absolute;
     bottom: 10px;
     left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    .side_bar {
+        position: absolute;
+        z-index: 1;
+        width: 100vw;
+    }
 }
