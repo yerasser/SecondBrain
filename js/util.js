@@ -24,18 +24,18 @@ onAuthStateChanged(auth, (authUser) => {
 
 $(document).ready(function() {
     function clearLists() {
-        $('.note_list').empty()
-        $('.all_notes').empty()
+        $('.note-list').empty()
+        $('.notes-container').empty()
     }
 
     function showError() {
-        $('.btn').addClass('error_input');
+        $('.gradient-btn').addClass('error-btn');
         setTimeout(function() { 
-            $('.btn').removeClass('error_input')
+            $('.gradient-btn').removeClass('error-btn')
         }, 500);
     };
 
-    $('.user').click(function() {
+    $('.nav-bar__user').click(function() {
         if(user) {
             $('#account_email').text(user.email)
             $('#account_window').show();
@@ -44,7 +44,7 @@ $(document).ready(function() {
         }
     });
     
-    $('.another_way_btn').click(function() {
+    $('.another-way-btn').click(function() {
         $('#signup_window').toggle();
     });
     
@@ -108,17 +108,17 @@ $(document).ready(function() {
             const querySnapshot = await getDocs(collection(db, user.uid));
             clearLists();
             querySnapshot.forEach((document) => {
-                $('.note_list').append('<li class="item_note_list" data-note-id="' + document.data().id + '"><span class="note_name">' + document.data().title + '</span></li>');
-                $('.all_notes').append('<div class="note" data-note-id="' + document.data().id + '"><div class="container_note_title"><h1 class="note_title" contenteditable="true">' + document.data().title + '</h1></div><div class="container_note_body"><div class="note_body" contenteditable="true">' + document.data().body + '</div></div></div>');
+                $('.note-list').append('<li class="note-list__item" data-note-id="' + document.data().id + '"><span class="note_name">' + document.data().title + '</span></li>');
+                $('.notes-container').append('<div class="note" data-note-id="' + document.data().id + '"><div class="note__title-container"><h1 class="note__title-item" contenteditable="true">' + document.data().title + '</h1></div><div class="note__body-container"><div class="note__body-item" contenteditable="true">' + document.data().body + '</div></div></div>');
             });
         } else {
             clearLists();
-            $('.note_list').append('<li class="item_note_list active_item" data-note-id="1"><span     class="note_name">Untitled</span></li>');
-            $('.all_notes').append('<div class="note active_note" data-note-id="1"><div class="container_note_title"><h1 class="note_title" contenteditable="true">Untitled</h1></div><div class="container_note_body"><div class="note_body" contenteditable="true">Hello</div></div></div>');
+            $('.note-list').append('<li class="note-list__item active-item" data-note-id="1"><span     class="note_name">Untitled</span></li>');
+            $('.notes-container').append('<div class="note active-note" data-note-id="1"><div class="note__title-container"><h1 class="note__title-item" contenteditable="true">Untitled</h1></div><div class="note__body-container"><div class="note__body-item" contenteditable="true">Hello</div></div></div>');
         }
     });
 
-    $('.logout').click(function() {
+    $('.nav-bar__logout').click(function() {
         auth.signOut()
     })
 
@@ -128,10 +128,10 @@ $(document).ready(function() {
         querySnapshot.forEach(async function(document) {
             await deleteDoc(doc(db, user.uid, document.id));    
         })
-        $('.all_notes .note').each(async function() {
+        $('.notes-container .note').each(async function() {
             const noteId = $(this).data('noteId');
-            const noteTitle = $(this).find('.note_title').text();
-            const noteBody = $(this).find('.note_body').text();
+            const noteTitle = $(this).find('.note__title-item').text();
+            const noteBody = $(this).find('.note__body-item').text();
             try {
                 const docRef = await addDoc(collection(db, user.uid), {
                     id: noteId,

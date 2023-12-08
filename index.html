@@ -14,93 +14,101 @@
 </head>
 <body>
     <div class="content">
-        <aside class="nav_bar">
-            <div class="user">
+        <aside class="nav-bar">
+            <div class="nav-bar__user">
                 <img src="image/nav_bar/user.png">
-                <div class="modal_window fadeIn" id="login_window" style="display: none;">
-                    <div class="modal_content">
-                        <h1 class="modal_title">Welcome</h1>
+                <div class="modal-window fadeIn" id="login_window" style="display: none;">
+                    <div class="modal-window__content">
+                        <h1 class="modal-window__title">Welcome</h1>
                         <div class="logo">
                             <img src="image/logo.png">
                         </div>
-                        <form class="auth_form" id="login">
-                            <div class="underline">
-                                <input type="email" class="auth_input" id="login_email" placeholder="Email" required>
+                        <form class="auth-form" id="login">
+                            <div>
+                                <input type="email" class="auth-form__input" id="login_email" placeholder="Email" required>
                             </div>
-                            <div class="underline">
-                                <input type="password" class="auth_input" id="login_password" placeholder="Password" required>
+                            <div>
+                                <input type="password" class="auth-form__input" id="login_password" placeholder="Password" required>
                             </div>
-                            <div class="auth_btns">
-                                <button type="submit" class="btn">Login</button>
+                            <div>
+                                <button type="submit" class="gradient-btn">Login</button>
                             </div>
                         </form>
-                        <button class="another_way_btn">Don't have acc? Sign up</button>
+                        <button class="another-way-btn">Don't have acc? Sign up</button>
                         <span class="warning">WARNING! Without authorization, your notes aren't saved</span>
                     </div>
                 </div>
-                <div class="modal_window" id="signup_window" style="display: none;">
-                    <div class="modal_content">
-                        <h1 class="modal_title">Welcome</h1>
+                <div class="modal-window" id="signup_window" style="display: none;">
+                    <div class="modal-window__content">
+                        <h1 class="modal-window__title">Welcome</h1>
                         <div class="logo">
                             <img src="image/logo.png">
                         </div>
-                        <form class="auth_form" id="signup">
-                            <div class="underline">
-                                <input type="email" class="auth_input" id="signup_email" placeholder="Email" required>
+                        <form class="auth-form" id="signup">
+                            <div>
+                                <input type="email" class="auth-form__input" id="signup_email" placeholder="Email" required>
                             </div>
                             <div>
-                                <input type="password" class="auth_input" id="signup_password" placeholder="Password" required>
+                                <input type="password" class="auth-form__input" id="signup_password" placeholder="Password" required>
                             </div>
                             <div>
-                                <input type="password" class="auth_input" id="signup_password_confirm" placeholder="Confirm password" required>
+                                <input type="password" class="auth-form__input" id="signup_password_confirm" placeholder="Confirm password" required>
                             </div>
-                            <div class="auth_btns">
-                                <button type="submit" class="btn">Sign up</button>
+                            <div>
+                                <button type="submit" class="gradient-btn">Sign up</button>
                             </div>
                         </form>
-                        <button class="another_way_btn">I have acc. Login</button>
+                        <button class="another-way-btn">I have acc. Login</button>
                         <span class="warning">WARNING! Without authorization, your notes aren't saved</span>
                     </div>
                 </div>
-                <div class="modal_window fadeIn" id="account_window" style="display: none;">
-                    <div class="modal_content">
-                        <h1 class="modal_title" id="account_email">Your account</h1>
-                        <div class="account_settings">
-                            <button class="btn" id="save_notes">Save notes</button>
+                <div class="modal-window fadeIn" id="account_window" style="display: none;">
+                    <div class="modal-window__content">
+                        <h1 class="modal-window__title" id="account_email">Your account</h1>
+                        <div class="account-settings">
+                            <button class="gradient-btn" id="save_notes">Save notes</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="show">
+            <div class="nav-bar__show">
                 <img src="image/nav_bar/show_side_bar.png">
             </div>
-            <div class="logout">
+            <div class="nav-bar__logout">
                 <img src="image/nav_bar/logout.png">
             </div>
         </aside>
         <main>
-            <div class="side_bar">
-                <div class="control_panel">
-                    <div class="new_note">
+            <div class="side-bar">
+                <div class="side-bar__control-panel">
+                    <div class="new-note">
                         <img src="image/side_bar/new_note.png">
                     </div>
-                    <div class="delete_note">
+                    <div class="delete-note">
                         <img src="image/side_bar/delete.png">
                     </div>
                     <div class="sort">
                         <img src="image/side_bar/sort.png">
-                        <select class="sort_select" style="display: none;">
-                            <option value="new_to_old">New to old</option>
-                            <option value="old_to_new">Old to new</option>
-                            <option value="a_z">A-Z</option>
-                            <option value="z_a">Z-A</option>
+                        <select class="sort__select" style="display: none;">
+                            <option value="new-to-old">New to old</option>
+                            <option value="old-to-new">Old to new</option>
+                            <option value="a-z">A-Z</option>
+                            <option value="z-a">Z-A</option>
                         </select>
                     </div>
                 </div>
-                <div class="note_list">
+                <div class="note-list">
                 </div>
             </div>
-            <div class="all_notes">
+            <div class="notes-container">
+                <div class="note" data-note-id="">
+                    <div class="note__title-container">
+                        <h1 class="note__title-item" contenteditable="true">Untitled</h1>
+                    </div>
+                    <div class="note__body-container">
+                        <div class="note__body-item" contenteditable="true">First note</div>
+                    </div>
+                </div>
             </div>
         </main>
     </div>

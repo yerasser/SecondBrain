@@ -1,77 +1,77 @@
 $(document).ready(function() {
-    $('.show').click(function() {
-        $('.side_bar').toggleClass('active_side_bar')
+    $('.nav-bar__show').click(function() {
+        $('.side-bar').toggleClass('active-side-bar')
     })
 
-    $('.note_list').on('click', '.item_note_list', function() {
-        $(this).addClass('active_item').siblings().removeClass('active_item');
+    $('.note-list').on('click', '.note-list__item', function() {
+        $(this).addClass('active-item').siblings().removeClass('active-item');
 
         let activeNoteId = $(this).data('note-id');
-        $('.note').filter('[data-note-id="' + activeNoteId + '"]').addClass('active_note').siblings().removeClass('active_note');
+        $('.note').filter('[data-note-id="' + activeNoteId + '"]').addClass('active-note').siblings().removeClass('active-note');
     });
 
-    $('.all_notes').on('input', '.note_title', function() {
-        $('.active_item .note_name').text($(this).text());
+    $('.notes-container').on('input', '.note__title-item', function() {
+        $('.active-item .note-list__item__name').text($(this).text());
         $(this).blur(function() {
             if($(this).text() === '') {
                 $(this).text('Untitled')
-                $('.active_item .note_name').text('Untitled');
+                $('.active-item .note-list__item__name').text('Untitled');
             }
         })
     });
 
-    $('.new_note').click(function() {
-        let noteId = $('.note_list .item_note_list').length + 1; 
-        $('.note_list').append('<li class="item_note_list" data-note-id="' + noteId + '"><span class="note_name">Untitled</span></li>');
-        $('.all_notes').append('<div class="note" data-note-id="' + noteId + '"><div class="container_note_title"><h1 class="note_title" contenteditable="true">Untitled</h1></div><div class="container_note_body"><div class="note_body" contenteditable="true">First note</div></div></div>');
+    $('.new-note').click(function() {
+        let noteId = $('.note-list .note-list__item').length + 1; 
+        $('.note-list').append('<li class="note-list__item" data-note-id="' + noteId + '"><span class="note-list__item__name">Untitled</span></li>');
+        $('.notes-container').append('<div class="note" data-note-id="' + noteId + '"><div class="note__title-container"><h1 class="note__title-item" contenteditable="true">Untitled</h1></div><div class="note__body-container"><div class="note__body-item" contenteditable="true">First note</div></div></div>');
     });
 
-    $('.delete_note').click(function() {
-        $('.active_item').remove();
-        $('.active_note').remove();
+    $('.delete-note').click(function() {
+        $('.active-item').remove();
+        $('.active-note').remove();
     })
 
     $('.sort').click(function(event) {
-        $('.sort_select').show();
+        $('.sort__select').show();
         event.stopPropagation();
     })
-    $('.sort_select').change(function() {
-        let items = $('.note_list .item_note_list');
+    $('.sort__select').change(function() {
+        let items = $('.note-list .note-list__item');
         switch($(this).val()) {
-            case 'new_to_old':
+            case 'new-to-old':
                 items.sort(function(a, b) {
                     return $(b).data('note-id') - $(a).data('note-id');
                 })
-                $('.note_list').html(items);
+                $('.note-list').html(items);
                 break;
-            case 'old_to_new':
+            case 'old-to-new':
                 items.sort(function(a, b) {
                     return $(a).data('note-id') - $(b).data('note-id');
                 })
-                $('.note_list').html(items);
+                $('.note-list').html(items);
                 break;
-            case 'a_z':
+            case 'a-z':
                 items.sort(function(a, b) {
-                    let aName = $(a).find('.note_name').text().toLowerCase();
-                    let bName = $(b).find('.note_name').text().toLowerCase();
+                    let aName = $(a).find('.note-list__item__name').text().toLowerCase();
+                    let bName = $(b).find('.note-list__item__name').text().toLowerCase();
                     return aName.localeCompare(bName);
                 });
-                $('.note_list').html(items);
+                $('.note-list').html(items);
                 break;
-            case 'z_a':
+            case 'z-a':
                 items.sort(function(a, b) {
-                    let aName = $(a).find('.note_name').text().toLowerCase();
-                    let bName = $(b).find('.note_name').text().toLowerCase();
+                    let aName = $(a).find('.note-list__item__name').text().toLowerCase();
+                    let bName = $(b).find('.note-list__item__name').text().toLowerCase();
                     return bName.localeCompare(aName);
                 });
-                $('.note_list').html(items);
+                $('.note-list').html(items);
                 break;
         }
         $(this).hide()
     })
     $(document).click(function(e) {
-        if (!$(e.target).closest('.sort_select').length) {
-          $('.sort_select').hide();
+        if (!$(e.target).closest('.sort__select').length) {
+          $('.sort__select').hide();
         }
     });
 })

@@ -1,4 +1,4 @@
-.all_notes {
+.notes-container {
     width: 100%;
     box-sizing: border-box;
 }
@@ -10,26 +10,26 @@
     overflow-y: auto;
 }
 
-.container_note_title {
+.note__title-container {
     position: relative;
     width: 100%;
     margin-bottom: 20px;
 }
 
-.note_title {
+.note__title-item {
     outline: none;
 }
 
-.container_note_body {
+.note__body-container {
     padding: 10px 0;
 }
 
-.note_body {
+.note__body-item {
     min-height: 80vh;
     outline: none;
 }
 
-.side_bar {
+.side-bar {
     position: relative;
     width: 20%;
     height: 100vh;
@@ -40,66 +40,52 @@
     transition: 0.5s;
 }
 
-.active_side_bar {
+.active-side-bar {
     transform: translateX(0);
 }
 
-.control_panel {
+.side-bar__control-panel {
     display: flex;
     justify-content: space-between;
     padding-bottom: 20px;
 }
 
-.control_panel > * {
+.side-bar__control-panel > * {
     cursor: pointer;
 }
 
-.sort_select {
+.sort__select {
     position: absolute;
     background-color: #fff;
     font-size: 14px;
 }
 
-.item_note_list {
+.note-list__item {
     display: flex;
     padding: 5px;
 }
 
-.item_note_list:hover {
+.note-list__item:hover {
     background-color: #d3d3d3;
     cursor: pointer;
 }
 
-.about_note {
-    display: flex;
-}
-
-.note_name {
+.note-list__item__name {
     max-width: 100%;
     font-size: 15px;
     overflow: hidden;
 }
 
-.active_note {
+.active-note {
     display: block;
 }
 
-.active_item {
+.active-item {
     background-color: #d3d3d3;
 }
 
-.user_about {
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
 @media screen and (max-width: 768px) {
-    .side_bar {
+    .side-bar {
         position: absolute;
         z-index: 1;
         width: 100vw;

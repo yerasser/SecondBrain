@@ -1,4 +1,4 @@
-.nav_bar {
+.nav-bar {
     position: absolute;
     z-index: 2;
     display: flex;
@@ -12,11 +12,11 @@
     border-right: 2px solid #8f8f8f;
 }
   
-.nav_bar > * {
+.nav-bar > * {
     cursor: pointer;
 }
 
-.modal_window {
+.modal-window {
     position: fixed;
     top: 0;
     left: 0;
@@ -26,7 +26,7 @@
     cursor: default;
 }
   
-.modal_content {
+.modal-window__content {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -40,7 +40,7 @@
     text-align: center;
 }
   
-.modal_content > * {
+.modal-window__content > * {
     width: 100%;
     margin-bottom: 20px;
     padding: 0 30px;
@@ -55,18 +55,18 @@
     width: 200px;
 }
 
-.auth_form > * {
+.auth-form > * {
     margin-bottom: 20px;
 }
 
-.auth_input {
+.auth-form__input {
     width: 100%;
     border: none;
     border-bottom: 2px solid #757582;
     font-size: 18px;
 }
 
-.btn {
+.gradient-btn {
     display: inline-block;
     width: 100%;
     padding: 10px;
@@ -83,21 +83,21 @@
     cursor:pointer;
 }
 
-.btn:hover {
+.gradient-btn:hover {
     background-position: right center;
 }
 
-.another_way_btn {
+.another-way-btn {
     width: fit-content;
     color: #4a4a4a;
     cursor:pointer;
 }
 
-.account_settings > * {
+.account-settings > * {
     margin: 10px 0;
 }
 
-.error_input {
+.error-btn {
     background-image: linear-gradient(to right, #800000 0%, #ff0000 51%, #800000 100%);
     animation: error 0.5s;
 }
@@ -142,14 +142,14 @@
 
 
 @media screen and (max-width: 768px) {
-    .nav_bar {
+    .nav-bar {
         bottom: 0;
         width: 100vw;
         height: 40px;
         padding: 10px 10px;
         flex-direction: row;
     }
-    .modal_content {
+    .modal-window__content {
         width: 90vw;
     }
 }
